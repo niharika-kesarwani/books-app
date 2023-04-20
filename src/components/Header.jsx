@@ -3,7 +3,13 @@ import "../App.css";
 import { useBooks } from "../main";
 
 export const Header = () => {
-  const { getReadList, getFavoritesList } = useBooks();
+  const { allBooksList } = useBooks();
+
+  const readListLength = allBooksList.filter(({ read }) => read).length;
+
+  const favoritesLength = allBooksList.filter(
+    ({ favorites }) => favorites
+  ).length;
 
   return (
     <>
@@ -12,10 +18,10 @@ export const Header = () => {
           All Books
         </NavLink>
         <NavLink className="navlink" to="/favorites">
-          favorites ({getFavoritesList.length})
+          favorites ({favoritesLength})
         </NavLink>
         <NavLink className="navlink" to="/read">
-          Read ({getReadList.length})
+          Read ({readListLength})
         </NavLink>
         <NavLink className="navlink" to="/profile">
           profile

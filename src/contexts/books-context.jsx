@@ -36,13 +36,8 @@ export const BooksProvider = ({ children }) => {
       )
     );
 
-  const getFavoritesList = () =>
-    allBooksList.filter(({ favorites }) => favorites);
-
   const isBookInFav = (book) =>
     allBooksList.find(({ id }) => id === book.id).favorites;
-
-  const getReadList = () => allBooksList.filter(({ read }) => read);
 
   const handleRead = (book) =>
     setAllBooksList((allBooksList) =>
@@ -58,8 +53,6 @@ export const BooksProvider = ({ children }) => {
         allBooksList,
         handleFavorites,
         isBookInFav,
-        getFavoritesList,
-        getReadList,
         handleRead,
         user,
       }}
